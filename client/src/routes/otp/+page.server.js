@@ -5,7 +5,7 @@ export const prerender = true;
 // +page.server.js
 import { error } from "@sveltejs/kit";
 import { get } from "svelte/store"; // Import the `get` utility from svelte/store
-import { subscriber } from "../stores/store";
+import { subscriber } from "../../stores/store";
 import { redirect } from "@sveltejs/kit";
 
 /** @type {import('./$types').PageLoad} */  
@@ -15,25 +15,11 @@ export function load () {
   // In a server `load` function, it is best to fetch data from a database or API directly.
   // If you must use a store, you should use the `get` utility to retrieve its current value.
   const user = get(subscriber);
-  // console.log(user.subscription)
-
-  // console.log(subscriber.subscriber[0].subscription);
-
-
-  if (user.subscription === false) {
-    // You must return an object from the load function
-    // For error handling, SvelteKit provides the `error` function
-    console.log("UnSubscribe User!");
-  }
-
-  if (user.subscription === true) {
-    // You must return an object from the load function
-    // For error handling, SvelteKit provides the `error` function
-    console.log("Subscribe User!");
-  }
+  const otp = user.otp
+  // console.log("User : " , user.otp)
 
   return {
-    user : user
+    otp : otp
   }
     
  } catch (error) {

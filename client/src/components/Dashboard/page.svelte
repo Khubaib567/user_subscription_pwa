@@ -1,7 +1,6 @@
 <script>
-  import { subscriber } from "../../stores/store";
   import { get } from "svelte/store";
-  import Login from "../Login/page.svelte";
+  import { subscriber } from "../../stores/store";
   const user = get(subscriber);
   const name = user.name;
 </script>

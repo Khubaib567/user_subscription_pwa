@@ -1,7 +1,6 @@
 <script>
-  import Dashboard from "../components/Dashboard/page.svelte";
   import Login from "../components/Login/page.svelte";
-
+  import UnSubscriber from "../components/UnSubscriber/page.svelte";
   // /** @type {import('./$types').PageProps} */
   let { data } = $props();
   const subscriber = data.user;
@@ -13,8 +12,8 @@
 </script>
 
 {#if subscription === false}
-  <Login />
+  <UnSubscriber />
 {/if}
 {#if subscription === true}
-  <Dashboard />
+  <Login />
 {/if}

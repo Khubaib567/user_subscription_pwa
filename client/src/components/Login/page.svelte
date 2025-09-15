@@ -4,7 +4,7 @@
     <input type="text" placeholder="03 XXXXXXXXX" class="input" />
   </div>
   <div class="text-center">
-    <a href="/home">
+    <a href="/otp">
       <button class="btn btn-active btn-success">Get OTP</button>
     </a>
   </div>
