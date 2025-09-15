@@ -1,0 +1,11 @@
+<div class="flex justify-center grid grid-flow-col grid-rows-3 gap-4">
+  <h1>Welcome to Our App</h1>
+  <div>
+    <input type="text" placeholder="03 XXXXXXXXX" class="input" />
+  </div>
+  <div class="text-center">
+    <a href="/home">
+      <button class="btn btn-active btn-success">Proceed</button>
+    </a>
+  </div>
+</div>
