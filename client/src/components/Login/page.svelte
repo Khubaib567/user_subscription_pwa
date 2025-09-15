@@ -5,7 +5,7 @@
   </div>
   <div class="text-center">
     <a href="/home">
-      <button class="btn btn-active btn-success">Proceed</button>
+      <button class="btn btn-active btn-success">Get OTP</button>
     </a>
   </div>
 </div>

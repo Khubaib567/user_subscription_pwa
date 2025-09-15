@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "server": "node --watch  --env-file-if-exists=.env server.js",
-    "pocketbase" : "cd pocketbase && pocketbase serve --dev"
+    "pocketbase": "cd pocketbase && pocketbase serve --dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.2.0",
     "pocketbase": "^0.26.2"
   },
   "devDependencies": {

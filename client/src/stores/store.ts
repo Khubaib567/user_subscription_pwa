@@ -1,5 +1,5 @@
 import { get, writable } from 'svelte/store';
-import getSubscriber  from "../../../server/server"
+import { getSubscriber }  from "../../../server/server"
 
 // export const userProfile = writable({ isLoggedIn: false, role: null });
 
