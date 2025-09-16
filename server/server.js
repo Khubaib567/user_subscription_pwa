@@ -18,7 +18,7 @@ const createOTP = async () => {
 export const getSubscriber = async (number) => {
     try {
         // const token = process.env.TOKEN as string;
-        const token  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2xsZWN0aW9uSWQiOiJwYmNfMzE0MjYzNTgyMyIsImV4cCI6MTc1ODAwOTE5MiwiaWQiOiJmcnNtbTJycDFjdDM3c2ciLCJyZWZyZXNoYWJsZSI6ZmFsc2UsInR5cGUiOiJhdXRoIn0.Le8LzwZu6QEtfMGVA29vavO-wLyZq7X_Z8IeFJ0Vzvk';
+        const token  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2xsZWN0aW9uSWQiOiJwYmNfMzE0MjYzNTgyMyIsImV4cCI6MTc1ODA5ODQzNSwiaWQiOiJmcnNtbTJycDFjdDM3c2ciLCJyZWZyZXNoYWJsZSI6ZmFsc2UsInR5cGUiOiJhdXRoIn0.yNmoUN0h-wjActiJ0XqslTnB7oGpg4ukO5ELW9UXVOY';
         // The second argument of `save` is the model, which can be `null`
         pb.authStore.save(token, null);
 
@@ -31,7 +31,7 @@ export const getSubscriber = async (number) => {
         return record;
     } catch (error) {
         console.error("Error : ", error.message);
-        throw error; // Rethrow the error to be handled by the caller
+        return error; // Rethrow the error to be handled by the caller
     }
 };
 
@@ -45,15 +45,24 @@ export const getOTP = async (number) => {
                 "otp" : otp
             };
             const user = await pb.collection('subscribers').getFirstListItem(`mssidn = "${number}"`);    
+            // console.log(user.id)
             const record = await pb.collection('subscribers').update(user.id, data);
+            // console.log(record)
             return otp
         } 
         if(user.subscription === false) return "User has not subscribed!";   
     } catch (error) {
         console.error("Error : " ,error.message)
+        return error
     }
 }
 
 
-// getOTP(923042574981)
+// const func = async() =>{
+//     const result = await getOTP(923042574981)
+//     console.log(result)
+// }
+
+// func()
+
 // getSubscriber(number)

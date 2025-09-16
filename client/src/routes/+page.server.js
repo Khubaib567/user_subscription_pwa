@@ -10,34 +10,30 @@ import { redirect } from "@sveltejs/kit";
 
 /** @type {import('./$types').PageLoad} */  
 export function load () {
- try {
-     // If `subscribers` is a client-side store, it cannot be reliably accessed on the server.
+
+  // If `subscribers` is a client-side store, it cannot be reliably accessed on the server.
   // In a server `load` function, it is best to fetch data from a database or API directly.
   // If you must use a store, you should use the `get` utility to retrieve its current value.
   const user = get(subscriber);
-  // console.log(user.subscription)
+  // console.log(user.status)
 
-  // console.log(subscriber.subscriber[0].subscription);
-
+  if(user.status === 404) throw redirect(307,'/unsub')
 
   if (user.subscription === false) {
     // You must return an object from the load function
     // For error handling, SvelteKit provides the `error` function
     console.log("UnSubscribe User!");
+    throw redirect(307,'/unsub');
   }
 
   if (user.subscription === true) {
     // You must return an object from the load function
     // For error handling, SvelteKit provides the `error` function
     console.log("Subscribe User!");
+    throw redirect(307,'/login');
+
   }
 
-  return {
-    user : user
-  }
-    
- } catch (error) {
-    console.error("Error : " , error)
- }
+   
 }
 

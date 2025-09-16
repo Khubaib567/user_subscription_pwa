@@ -1,7 +1,6 @@
 <script>
   let { data } = $props();
   const otp = data.otp;
-  console.log("OTP is : ", otp);
 </script>
 
 <div class="flex justify-center grid grid-flow-col grid-rows-4 gap-4">
