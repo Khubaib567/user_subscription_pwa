@@ -65,4 +65,4 @@ export const getOTP = async (number) => {
 
 // func()
 
-// getSubscriber(number)
+// getSubscriber(923042574981)
