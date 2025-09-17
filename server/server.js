@@ -18,7 +18,7 @@ const createOTP = async () => {
 export const getSubscriber = async (number) => {
     try {
         // const token = process.env.TOKEN as string;
-        const token  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2xsZWN0aW9uSWQiOiJwYmNfMzE0MjYzNTgyMyIsImV4cCI6MTc1ODA5ODQzNSwiaWQiOiJmcnNtbTJycDFjdDM3c2ciLCJyZWZyZXNoYWJsZSI6ZmFsc2UsInR5cGUiOiJhdXRoIn0.yNmoUN0h-wjActiJ0XqslTnB7oGpg4ukO5ELW9UXVOY';
+        const token  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2xsZWN0aW9uSWQiOiJwYmNfMzE0MjYzNTgyMyIsImV4cCI6MTc1ODE4NTQ0NiwiaWQiOiJmcnNtbTJycDFjdDM3c2ciLCJyZWZyZXNoYWJsZSI6ZmFsc2UsInR5cGUiOiJhdXRoIn0.jdC-oh4YlXYnvRd4XsCoA0s33KgiT4QvPJ9jQoa1p8k';
         // The second argument of `save` is the model, which can be `null`
         pb.authStore.save(token, null);
 

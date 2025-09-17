@@ -1,6 +1,9 @@
 import { redirect  , error } from '@sveltejs/kit';
-import { number } from '../../stores/store';
+import { number, otp } from '../../stores/store';
  
+
+export const prerender = false;
+
 export function load() {
 	console.log("Load Function has triggered!");
 }
@@ -21,14 +24,14 @@ export const actions = {
     	}
 
 		// If validation passes, you can process the data, e.g., save to a database.
-    	console.log('Phone number is valid:', userNumber);
-		number.set(parseInt(userNumber))
+    	if(phoneRegex.test(userNumber)){
+			console.log('Phone number is valid:', userNumber);
+			number.set(parseInt(userNumber))
+			// otp.set(parseInt(userNumber))
+			throw redirect(303, '/otp');
+		}
 
-		throw redirect(303, '/otp');
-		// const user = number.subscribe((value)=>{
-		// 	msisdn = value
-		// })
-		// console.log(user);
+		
 	}
 }
 
