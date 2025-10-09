@@ -2,7 +2,7 @@ import { browser } from "$app/environment";
 export const fromLocalStorage = (storageKey: string, fallbackValue: any) => {
   if (browser) {
     const storedValue = window.localStorage.getItem(storageKey);
-    console.log("Cookies : " , storedValue)
+
     if (storedValue !== "undefined" && storedValue !== null) {
       return typeof fallbackValue === "object"
         ? JSON.parse(storedValue)

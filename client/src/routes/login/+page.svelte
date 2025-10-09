@@ -17,7 +17,7 @@
       </div>
 
       <div class="text-center">
-        <button formaction="?/otp" class="text-white btn btn-active bg-red-400"
+        <button formaction="?/otp" class="btn btn-active btn-success"
           >Get OTP</button
         >
       </div>

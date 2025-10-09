@@ -15,7 +15,7 @@ export function load () {
   // In a server `load` function, it is best to fetch data from a database or API directly.
   // If you must use a store, you should use the `get` utility to retrieve its current value.
   const user = get(subscriber);
-  // console.log(user.status)
+  // console.log(user)
 
   if(user.status === 404) throw redirect(307,'/unsub')
 

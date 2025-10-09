@@ -1,13 +1,54 @@
-import { get, writable } from 'svelte/store';
-import { getSubscriber ,getOTP }  from "../../../server/server"
+import { writable } from "svelte/store";
+import { toLocalStorage, fromLocalStorage } from "./storage";
+import { CITIES_LIST, type TCityData } from "../assets/data/constants";
+import { AYATLIST } from "../assets/daily_content/romanAyat";
+import { HADITHLIST } from "../assets/daily_content/romanHadith";
 
-// export const userProfile = writable({ isLoggedIn: false, role: null });
+const loggedInInitialValue = fromLocalStorage("loggedIn", false);
+export const loggedIn = writable(loggedInInitialValue);
+toLocalStorage(loggedIn, "loggedIn");
 
-export const number = writable(923042574981)
+const msisdnInitialValue = fromLocalStorage("msisdn", null);
+export const msisdn = writable(msisdnInitialValue);
+toLocalStorage(msisdn, "msisdn");
 
-export const subscriber = writable(await getSubscriber(get(number)));
+const accessTokenInitialValue = fromLocalStorage("accessToken", "");
+export const accessToken = writable(accessTokenInitialValue);
+toLocalStorage(accessToken, "accessToken");
 
-export const otp = writable(await getOTP(get(number)))
-// subscriber.subscribe(value => {
-//       console.log(value)
-//   })
+const isMaleInitialValue = fromLocalStorage("isMale", false);
+export const isMale = writable(isMaleInitialValue);
+toLocalStorage(isMale, "isMale");
+
+const isHanafiInitialValue = fromLocalStorage("isHanafi", true);
+export const isHanafi = writable(isHanafiInitialValue);
+toLocalStorage(isHanafi, "isHanafi");
+
+const isUrduInitialValue = fromLocalStorage("isUrdu", true);
+export const isUrdu = writable(isUrduInitialValue);
+toLocalStorage(isUrdu, "isUrdu");
+
+const subStatusInitialValue = fromLocalStorage("subStatus", "false");
+export const subStatus = writable(subStatusInitialValue);
+toLocalStorage(subStatus, "subStatus");
+
+const currentCityInitialValue = fromLocalStorage("currentCity", CITIES_LIST[2]);
+export const currentCity: any = writable(currentCityInitialValue);
+toLocalStorage(currentCity, "currentCity");
+
+export const citiesListInitialValue = fromLocalStorage(
+  "citiesList",
+  CITIES_LIST
+);
+export const citiesList = writable(citiesListInitialValue);
+toLocalStorage(citiesList, "citiesList");
+
+export const ayatList = writable(AYATLIST);
+export const hadithList = writable(HADITHLIST);
+
+// const appIDInitialValue = fromLocalStorage(
+//   "appID",
+//   "e9aecf06c1cd4721bea533233f9fa454"
+// );
+// export const appID = writable(appIDInitialValue);
+// toLocalStorage(appID, "appID");
