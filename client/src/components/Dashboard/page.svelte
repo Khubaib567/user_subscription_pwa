@@ -64,13 +64,13 @@
       <div class="stat-title text-white">
         {$currentCityDailyPrayerTime.date_str}
       </div>
-      <div class="stat-title text-white">
+      <!-- <div class="stat-title text-white">
         <span>
           ({$currentCityDailyPrayerTime.hijri_date.hd}
         </span>
         {HIJRI_MONTHS_LIST[+$currentCityDailyPrayerTime.hijri_date.hm - 1]}
         {$currentCityDailyPrayerTime.hijri_date.hy})
-      </div>
+      </div> -->
     </div>
     <div class="stat" />
   </div>

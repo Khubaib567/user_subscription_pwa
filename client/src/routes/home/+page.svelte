@@ -30,7 +30,7 @@
     </div>
     <Dashboard />
     <br />
-    <PrayerWidget />
+    <!-- <PrayerWidget /> -->
     <br />
     <Slider />
     <br />

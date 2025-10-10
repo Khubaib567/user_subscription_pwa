@@ -81,55 +81,47 @@
             {/if}
           </li>
           <li>
-            <button
-              ><label class="label">
-                {#if $isUrdu}
-                  <span class="label-text" dir="rtl">عورت</span>
-                {:else}
-                  <span class="label-text">Female</span>
-                {/if}
-                <input
-                  name="toggle_calcmethod"
-                  type="checkbox"
-                  class="toggle toggle-secondary"
-                  bind:checked={$isMale}
-                />
-                {#if $isUrdu}
-                  <span class="label-text" dir="rtl">مرد</span>
-                {:else}
-                  <span class="label-text">Male </span>
-                {/if}
-              </label></button
-            >
+            <label class="label">
+              {#if $isUrdu}
+                <span class="label-text" dir="rtl">عورت</span>
+              {:else}
+                <span class="label-text">Female</span>
+              {/if}
+              <input
+                name="toggle_calcmethod"
+                type="checkbox"
+                class="toggle toggle-secondary"
+                bind:checked={$isMale}
+              />
+              {#if $isUrdu}
+                <span class="label-text" dir="rtl">مرد</span>
+              {:else}
+                <span class="label-text">Male </span>
+              {/if}
+            </label>
           </li>
           <li>
-            <button
-              ><label class="label">
-                <span class="label-text">English</span>
-                <input
-                  name="toggle_calcmethod"
-                  type="checkbox"
-                  class="toggle toggle-secondary"
-                  bind:checked={$isUrdu}
-                />
-                <span class="label-text" dir="rtl">اردو</span>
-              </label></button
-            >
+            <label class="label">
+              <span class="label-text">English</span>
+              <input
+                name="toggle_calcmethod"
+                type="checkbox"
+                class="toggle toggle-secondary"
+                bind:checked={$isUrdu}
+              />
+              <span class="label-text" dir="rtl">اردو</span>
+            </label>
           </li>
           <li>
-            <button
-              ><label class="label">
-                <span class="label-text">Fiqh Ja'afria</span>
-                <input
-                  on:click={toggleCalcMethod}
-                  name="toggle_calcmethod"
-                  type="checkbox"
-                  class="toggle toggle-secondary"
-                  bind:checked={$isHanafi}
-                />
-                <span class="label-text">Fiqh Hanafi</span>
-              </label></button
-            >
+            <span class="label-text">Fiqh Ja'afria</span>
+            <input
+              on:click={toggleCalcMethod}
+              name="toggle_calcmethod"
+              type="checkbox"
+              class="toggle toggle-secondary"
+              bind:checked={$isHanafi}
+            />
+            <span class="label-text">Fiqh Hanafi</span>
           </li>
           {#if $subStatus == "true"}
             <li>

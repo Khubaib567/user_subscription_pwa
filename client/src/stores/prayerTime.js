@@ -1,22 +1,22 @@
 import { writable } from "svelte/store";
 import { fromLocalStorage, toLocalStorage } from "./storage";
 
-export type TPrayerSetting = {
-  calcMethod: string;
-  asrMethod: string;
-  timeZone: number;
-  timeFormat: string;
+export const prayerSetting = {
+  calcMethod: null,
+  asrMethod: null,
+  timeZone: null,
+  timeFormat: null
 };
 
-export type TPrayerNotification = {
-  name: string;
-  notificationStatus: boolean;
-};
-export type TPrayerNotificationList = {
-  notifications: TPrayerNotification[];
+// export let prayerNotifications = {
+//   name: null,
+//   notificationStatus: null
+// };
+export const prayerNotificationList = {
+  notifications: null
 };
 
-const prayerNotificationsInitialValue: TPrayerNotificationList =
+const prayerNotificationsInitialValue =
   fromLocalStorage("prayerNotifications", {
     notifications: [
       {
@@ -53,9 +53,10 @@ export const prayerSettingsInitialValue = fromLocalStorage("prayerSettings", {
 export const prayerSettings = writable(prayerSettingsInitialValue);
 toLocalStorage(prayerSettings, "prayerSettings");
 
+// NEEDS TO UPDATED THE PRAYER TIME
 export const currentCityDailyPrayerTimeInitialValue = fromLocalStorage(
   "currentCityDailyPrayerTime",
-  null
+  null,
 );
 export const currentCityDailyPrayerTime = writable(
   currentCityDailyPrayerTimeInitialValue
