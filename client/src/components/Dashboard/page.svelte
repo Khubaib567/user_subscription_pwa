@@ -27,7 +27,7 @@
   export const timeTracker = setInterval(() => {
     currentDateTime = new Date();
     nextPrayer = getNextSalah(currentDateTime);
-
+    console.log("Time : " , nextPrayer)
     if (nextPrayer != undefined) {
       // console.log("----------nextPrayer", nextPrayer);
       let timeToNext = toHoursAndMinutes((nextPrayer.timeDiff / 1000) * -1);

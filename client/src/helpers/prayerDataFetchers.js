@@ -24,6 +24,7 @@ export const fetchCityPrayerTime = async (cityData) => {
   // console.log(url);
   const response = await fetch(url);
   const data = await response.json();
+  // console.log("Data : ",data)
 
   currentCityDailyPrayerTime.set(data);
   return data;
@@ -40,12 +41,21 @@ export const fetchCityMonthCalendar = async (city) => {
 };
 
 const appendPrayerDateToTime = (time) => {
-  const prayerDate = get(currentCityDailyPrayerTime).date;
-  return `${prayerDate.y}/${prayerDate.m}/${prayerDate.d} ${time}`;
+  // Get tomorrow's date
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  
+  // Format the date
+  const isoString = tomorrow.toISOString();
+  const dateOnly = isoString.substring(0, 10);
+  const newFormat = dateOnly.replace(/(\d{4})-(\d{2})-(\d{2})/, '$1/$2/$3');
+  
+  return `${newFormat} ${time}`;
 };
 
 export const getNextSalah = (currentDateTime) => {
   const currentPrayerSchedule = get(currentCityDailyPrayerTime);
+
 
   const currentFajrTime = {
     prayer: "fajr",
@@ -88,8 +98,10 @@ export const getNextSalah = (currentDateTime) => {
 
   let prayerStatusArray = getTimeToNext(currentDateTime, prayerTimeArray);
 
+  // return prayerStatusArray[0]
   for (let i = 0; i < 5; i++) {
     if (!prayerStatusArray[i].prayerTimeStarted) {
+      // console.log("Prayer status : " ,prayerStatusArray[i])
       return prayerStatusArray[i];
     }
   }
@@ -117,11 +129,11 @@ const getTimeToNext = (currentDateTime, prayerTimeArray) => {
 
   // console.log("---------------prayerTimeArray", prayerTimeArray);
   for (let i = 0; i < prayerTimeArray.length; i++) {
-    let prayerTimeEpoch = Date.parse(prayerTimeDiffArray[i].time),
-      timeDiff = currentDateEpochs - prayerTimeEpoch;
-    prayerTimeDiffArray[i] = {
+      let prayerTimeEpoch = Date.parse(prayerTimeDiffArray[i].time),
+       timeDiff = currentDateEpochs - prayerTimeEpoch;
+      prayerTimeDiffArray[i] = {
       prayer: prayerTimeDiffArray[i].prayer.toUpperCase(),
-      prayerTimeStarted: currentDateEpochs > prayerTimeEpoch,
+      prayerTimeStarted: currentDateEpochs >  prayerTimeEpoch,
       timeDiff: timeDiff,
     };
   }

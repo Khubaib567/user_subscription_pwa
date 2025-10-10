@@ -14,22 +14,22 @@ import { getAccessToken } from "../helpers/subscriptionHelpers";
 import { fetchCityPrayerTime } from "../helpers/prayerDataFetchers";
 
 export const load = async ({ parent, data }) => {
-  await parent();
+  // await parent();
 
-  let { page_server_data } = data;
+  // let { page_server_data } = data;
 
-  let phoneNumber = data.page_server_data.msisdn;
+  // let phoneNumber = data.page_server_data.msisdn;
 
-  msisdn.set(phoneNumber);
+  // msisdn.set(phoneNumber);
 
-  const getAccessTokenResponse = await getAccessToken();
+  // const getAccessTokenResponse = await getAccessToken();
 
-  if (getAccessTokenResponse.response[0]["desc"] == "Verified User") {
-    accessToken.set(getAccessTokenResponse.response[0]["token"]);
-    subStatus.set(getAccessTokenResponse.response[0]["sub_status"]);
-  }
+  // if (getAccessTokenResponse.response[0]["desc"] == "Verified User") {
+  //   accessToken.set(getAccessTokenResponse.response[0]["token"]);
+  //   subStatus.set(getAccessTokenResponse.response[0]["sub_status"]);
+  // }
 
-  return {
-    prayerTime: fetchCityPrayerTime(get(currentCity)),
-  };
+  // return {
+  //   prayerTime: fetchCityPrayerTime(get(currentCity)),
+  // };
 };

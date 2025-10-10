@@ -17,22 +17,22 @@ export function load () {
   const user = get(subscriber);
   // console.log(user)
 
-  if(user.status === 404) throw redirect(307,'/unsub')
+  // if(user.status === 404) throw redirect(307,'/unsub')
 
-  if (user.subscription === false) {
-    // You must return an object from the load function
-    // For error handling, SvelteKit provides the `error` function
-    console.log("UnSubscribe User!");
-    throw redirect(307,'/unsub');
-  }
+  // if (user.subscription === false) {
+  //   // You must return an object from the load function
+  //   // For error handling, SvelteKit provides the `error` function
+  //   console.log("UnSubscribe User!");
+  //   throw redirect(307,'/unsub');
+  // }
 
-  if (user.subscription === true) {
-    // You must return an object from the load function
-    // For error handling, SvelteKit provides the `error` function
-    console.log("Subscribe User!");
-    throw redirect(307,'/login');
+  // if (user.subscription === true) {
+  //   // You must return an object from the load function
+  //   // For error handling, SvelteKit provides the `error` function
+  //   console.log("Subscribe User!");
+  //   throw redirect(307,'/login');
 
-  }
+  // }
 
    
 }

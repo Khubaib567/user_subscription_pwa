@@ -31,13 +31,13 @@
     <Dashboard />
     <br />
     <!-- <PrayerWidget /> -->
-    <br />
+    <!-- <br />
     <Slider />
     <br />
     <ContentOfTheDayCard contentProp={ayatProp} />
     <br />
     <ContentOfTheDayCard contentProp={hadithProp} />
-    <br />
+    <br /> -->
     <!-- <ContentOfTheDayCard
       contentProp={// contentType: "Dua",
       $ayatList[contentDayToGet]}
