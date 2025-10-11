@@ -3,17 +3,21 @@
   import { currentCityDailyPrayerTime } from "../../stores/prayerTime";
   // import { currentCity } from "../../stores/store";
 
+  // STEP 01 : IMPORT THE GETNEXTSALAH FUNCTION FROM HELPERS.
   import { getNextSalah } from "../../helpers/prayerDataFetchers";
 
+  // STEP 02 : INITIALIZE THE REQ. VARIABLES.
   let currentDateTime = new Date();
 
   let hours: any;
   let minutes: any;
   let seconds: any;
 
+  // STEP 03 : INITIALIZE A PRAYER OBJECT TO AN ARRAY & RENDER IT WHEN SHOWNEXTTIME IS 'TRUE'
   let nextPrayer: any = {};
   let showNextTime: any = false;
 
+  // STEP 04 : CREATE A FUNCTION FOR GETTING HOURS & MINUTES FROM SECONDS.
   function toHoursAndMinutes(totalSeconds: any) {
     const totalMinutes = Math.floor(totalSeconds / 60);
 
@@ -24,19 +28,24 @@
     return { h: hours, m: minutes, s: seconds };
   }
 
+  // STEP 05: EXOPRT THIS FUNCTION WHENEVER WE IMPORTED THIS COMPONENT
   export const timeTracker = setInterval(() => {
+    // STEP 05.1 : GET THE CURRENT DATE.
     currentDateTime = new Date();
+    // STEP 05.2 : GET THE NEXT PRAYER OBJECT
     nextPrayer = getNextSalah(currentDateTime);
     // console.log("Time : " , nextPrayer)
+    // STEP 05.3 : IF THE NEXTPRAYER IS NOT UNDEFINED.
     if (nextPrayer != undefined) {
       // console.log("----------nextPrayer", nextPrayer);
+      // STEP 04.3 : SET THE HOURS , MINUTES , & SECONDS TO TIMETONEXT VARIABLE & SET 'showNextTime' TO TRUE.
       let timeToNext = toHoursAndMinutes((nextPrayer.timeDiff / 1000) * -1);
       showNextTime = true;
-
       hours = timeToNext.h;
       minutes = timeToNext.m;
       seconds = timeToNext.s;
     } else {
+      // STEP 04.4: SET THE SHOWNEXT_TIME TO FALSE IF NEXTPRAYER OBJECT IS EMPTY.
       showNextTime = false;
     }
   }, 1000);

@@ -26,7 +26,7 @@ export const fetchCityPrayerTime = async (cityData) => {
   // console.log(url);
   const response = await fetch(url);
   const data = await response.json();
-  console.log("Data : ",data)
+  // console.log("Data : ",data)
 
   currentCityDailyPrayerTime.set(data);
   return data;
@@ -42,30 +42,51 @@ export const fetchCityMonthCalendar = async (city) => {
   return data;
 };
 
+// STEP 06.4: APPEND THE DATE BASED ON THE SPECIFIC TIME
 const appendPrayerDateToTime = (time) => {
+  
+  // STEP 06.5 : INITIALIZE THE DATE.
   // Get current date
   const date = new Date();
+
+  // STEP 06.6 : GET THE DATE IN ISO FORMAT.
+  // * Format the date
+  let isoString = date.toISOString();
+  // STEP 06.7: EXTRACT ONLY FROM THE ISO FORMAT DATE.
+  let dateOnly = isoString.substring(0, 10);
+  // STEP 06.8 : APPLY REGEX TO GET THE DATE.
+  let dateFormat = dateOnly.replace(/(\d{4})-(\d{2})-(\d{2})/, '$1/$2/$3');
   
-  // Check if time is exactly "7:23pm" (case-insensitive)
-  if (time.toLowerCase() === currentCityDailyPrayerTime.isha) {
+  // STEP 06.9 : CONVERT THE DATE INTO EPOCHS IN ORDER TO COMPARE THE VALUES BETWEEN THE EPOCHS 
+    // ? (CURRENTEPOCH - SPECIFIC TIME EPOCH)
+  const namazSpecificTime = convertTime12to24(get(currentCityDailyPrayerTime).isha)
+  const namazSpecificTimeEpochs = Date.parse(`${dateFormat} ${namazSpecificTime}` )
+  const currentTimeEpochs = Date.parse(`${dateFormat} ${time}`)
+  // console.log("Prayer time: " , namazSpecificTimeEpochs);
+  if (currentTimeEpochs < namazSpecificTimeEpochs) {
     // Use tomorrow's date
     date.setDate(date.getDate() + 1);
+    isoString = date.toISOString();
+    dateOnly = isoString.substring(0, 10);
+    dateFormat = dateOnly.replace(/(\d{4})-(\d{2})-(\d{2})/, '$1/$2/$3');
+
+    // * RETURN THE DATE WITH TIME .
+    return `${dateFormat} ${time}`
   }
   
-  // Format the date
-  const isoString = date.toISOString();
-  const dateOnly = isoString.substring(0, 10);
-  const newFormat = dateOnly.replace(/(\d{4})-(\d{2})-(\d{2})/, '$1/$2/$3');
-  
-  return `${newFormat} ${time}`;
+  // * RETURN THE DATE WITH TIME .
+  return `${dateFormat} ${time}`;
 };
 
+// SETP 06 : FUNCTION TO GET NEXT SALAH OBJECT.
 export const getNextSalah = (currentDateTime) => {
   const currentPrayerSchedule = get(currentCityDailyPrayerTime);
 
-
+  // STEP 06.1 : INITIALIZE THE PRAYERDATE WITH TIME INTO OBJECT TO GET THE NEXT SALAH DATE EPOCHS.
   const currentFajrTime = {
+    // STEP 06.2 : INITIALIZE THE PRAYER PROPERTY VALUE.
     prayer: "fajr",
+    // STEP 06.3:  FUNCTION TO GET TIME BASED ON DATE PARSING WITH TIME.
     time: appendPrayerDateToTime(convertTime12to24(currentPrayerSchedule.fajr)),
   };
   const currentDhuhrTime = {
@@ -95,6 +116,8 @@ export const getNextSalah = (currentDateTime) => {
   // isha
   // date_str
   // date
+
+  // STEP 06.4 : NOW ENCAUPSULAETED THE OBJECT VALUE(S) INTO AN ARRAY.
   const prayerTimeArray = [
     currentFajrTime,
     currentDhuhrTime,
@@ -103,8 +126,10 @@ export const getNextSalah = (currentDateTime) => {
     currentIshaTime,
   ];
 
+  // STEP 06.5: FUNCTION TO GET TIME TO NEXT PRAYER .
   let prayerStatusArray = getTimeToNext(currentDateTime, prayerTimeArray);
 
+    // STEP 06.6: RETURN THE NEXT PRYAER WHOSE EPOCHS VALUE IS GREATER THEN CURRENT DATE EPOCHS VALUE.
   // return prayerStatusArray[0]
   for (let i = 0; i < 5; i++) {
     if (!prayerStatusArray[i].prayerTimeStarted) {
@@ -114,13 +139,18 @@ export const getNextSalah = (currentDateTime) => {
   }
 };
 
+
+
+// STEP 07: FUNCTION TO GET NEXT SALAH OBJECT.
 const getTimeToNext = (currentDateTime, prayerTimeArray) => {
   let prayerTimeDiffArray;
 
+  // STEP 07.2 : FUNCTION TO RETURN THE CURRENT DATETIME FROM KARACHI. (NEEDS TO MAKE THIS TIME ZONE DYNAMIC)
   currentDateTime = new Date().toLocaleString("en", {
     timeZone: "Asia/Karachi",
   });
 
+  // STEP 07.3 : FUNCTION TO INITIALIZE THE PRAYERTIME ARRAY PROPERTY TIME BASED ON PRAYER SPECIFIC DATE TIME.
   for (let i = 0; i < prayerTimeArray.length; i++) {
     prayerTimeArray[i].time = new Date(prayerTimeArray[i].time).toLocaleString(
       "en",
@@ -130,6 +160,9 @@ const getTimeToNext = (currentDateTime, prayerTimeArray) => {
     );
   }
 
+
+  // STEP 07.4 : FUNCTION TO INITIALIZE THE ARRAY VALUES INTO 'prayerTimeDiffArray' ARRAY.
+        // ? In order to find the time difference values (currentime - specific prayertime) within array. 
   prayerTimeDiffArray = [...prayerTimeArray];
 
   let currentDateEpochs = Date.parse(currentDateTime);
