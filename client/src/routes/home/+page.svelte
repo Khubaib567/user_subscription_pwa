@@ -23,13 +23,12 @@
   };
 </script>
 
-<div class="container">
+<div >
   <div class="bg-gray-50">
     <div class="flex justify-center border-t-2 rounded-xl">
       <h1 class="text-4xl pl-5 pt-2 font-bold text-secondary">!السلام عليكم</h1>
     </div>
     <Dashboard />
-    <br />
     <PrayerWidget />
     <!-- <br />
     <Slider />

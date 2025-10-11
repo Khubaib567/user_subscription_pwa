@@ -27,7 +27,7 @@
   export const timeTracker = setInterval(() => {
     currentDateTime = new Date();
     nextPrayer = getNextSalah(currentDateTime);
-    console.log("Time : " , nextPrayer)
+    // console.log("Time : " , nextPrayer)
     if (nextPrayer != undefined) {
       // console.log("----------nextPrayer", nextPrayer);
       let timeToNext = toHoursAndMinutes((nextPrayer.timeDiff / 1000) * -1);
@@ -44,9 +44,9 @@
 
 <div class="flex justify-center px-5 pt-4 pb-50">
   <div
-    class="bg-[url(https://i.ibb.co/2drgzVX/mosque-1.png)] stats w-screen bg-no-repeat bg-cover"
+    class="bg-[url('$lib/images/banner.png')] stats w-screen h-100 bg-no-repeat bg-cover"
   >
-    <div class="stat pl-10">
+    <div class="stat pl-10 content-center">
       {#if showNextTime}
         <div>
           <h2 class="card-title text-2xl text-white">
@@ -64,13 +64,13 @@
       <div class="stat-title text-white">
         {$currentCityDailyPrayerTime.date_str}
       </div>
-      <!-- <div class="stat-title text-white">
+      <div class="stat-title text-white">
         <span>
-          ({$currentCityDailyPrayerTime.hijri_date.hd}
+          {$currentCityDailyPrayerTime.hijri_date.hd}
         </span>
         {HIJRI_MONTHS_LIST[+$currentCityDailyPrayerTime.hijri_date.hm - 1]}
-        {$currentCityDailyPrayerTime.hijri_date.hy})
-      </div> -->
+        {$currentCityDailyPrayerTime.hijri_date.hy}
+      </div>
     </div>
     <div class="stat" />
   </div>

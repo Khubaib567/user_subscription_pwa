@@ -10,7 +10,9 @@ import {
 import { convertTime12to24 } from "./dateConvertor";
 
 export const fetchCityPrayerTime = async (cityData) => {
-  // console.log("getting prayer timings");
+  // console.log("getting prayer timings : " , cityData);
+  const city = get(cityData)
+  // console.log("City : ",city)
   let calcMethod;
   if (get(isHanafi)) {
     calcMethod = "KARACHI";
@@ -24,7 +26,7 @@ export const fetchCityPrayerTime = async (cityData) => {
   // console.log(url);
   const response = await fetch(url);
   const data = await response.json();
-  // console.log("Data : ",data)
+  console.log("Data : ",data)
 
   currentCityDailyPrayerTime.set(data);
   return data;

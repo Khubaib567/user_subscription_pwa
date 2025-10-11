@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 import { toLocalStorage, fromLocalStorage } from "./storage";
-import { CITIES_LIST, type TCityData } from "../assets/data/constants";
+import { CITIES_LIST } from "../assets/data/constants";
 import { AYATLIST } from "../assets/daily_content/romanAyat";
 import { HADITHLIST } from "../assets/daily_content/romanHadith";
 

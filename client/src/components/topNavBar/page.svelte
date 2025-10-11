@@ -34,8 +34,8 @@
   <div class="navbar-start" />
   <div class="navbar-center">
     <a href="/home" class="btn btn-ghost normal-case text-2xl">
-      <span style="color:#99B83B">ZONG&nbsp;</span><span style="color:#E40077"
-        >ISLAMIC</span
+      <span style="color:#99B83B">USER&nbsp;</span><span style="color:#E40077"
+        >SUBSCRIPTION </span
       >
     </a>
   </div>

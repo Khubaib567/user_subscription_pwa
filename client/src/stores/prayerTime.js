@@ -56,14 +56,15 @@ toLocalStorage(prayerSettings, "prayerSettings");
 // NEEDS TO UPDATED THE PRAYER TIME
 export const currentCityDailyPrayerTimeInitialValue = fromLocalStorage(
   "currentCityDailyPrayerTime",
-  {
-    fajr : "5:08 am" , 
-    dhuhr : "12:21 pm",
-    asr : "3:40 pm",
-    maghrib : "6:10 pm",
-    isha : "7:23 pm"
-  }
-  
+    {
+      fajr : "5:08 am" , 
+      dhuhr : "12:21 pm",
+      asr : "3:40 pm",
+      maghrib : "6:10 pm",
+      isha : "7:23 pm",
+      hijri_date : { hd: null , hm:null , hy : null }
+    }
+  ,
 
 );
 export const currentCityDailyPrayerTime = writable(

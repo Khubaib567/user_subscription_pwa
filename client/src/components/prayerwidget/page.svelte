@@ -9,12 +9,13 @@
   import { fetchCityPrayerTime } from "../../helpers/prayerDataFetchers";
 
   const changeSelectedCity = (selectCity) => {
+    console.log("City Time Fetchers : ",selectCity)
     currentCity.set({
       name: selectCity.name,
       location: selectCity.location,
     });
 
-    fetchCityPrayerTime(selectCity);
+    fetchCityPrayerTime(currentCity);
   };
 </script>
 
