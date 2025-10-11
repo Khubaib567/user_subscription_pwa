@@ -6,7 +6,7 @@
     // prayerNotifications,
     currentCityDailyPrayerTime,
   } from "../../stores/prayerTime";
-  // import { fetchCityPrayerTime } from "../../helpers/prayerDataFetchers";
+  import { fetchCityPrayerTime } from "../../helpers/prayerDataFetchers";
 
   const changeSelectedCity = (selectCity) => {
     currentCity.set({
@@ -14,7 +14,7 @@
       location: selectCity.location,
     });
 
-    // fetchCityPrayerTime(selectCity);
+    fetchCityPrayerTime(selectCity);
   };
 </script>
 
@@ -34,9 +34,9 @@
             <ul>
               {#each $citiesList as cityItem}
                 <div class="w-full py-2 text-sm font-medium flex items-center">
-                  <!-- <button on:click={changeSelectedCity(cityItem)}>
+                  <button on:click={() => changeSelectedCity(cityItem)}>
                     <a href={null}>{cityItem.name}</a>
-                  </button> -->
+                  </button>
                 </div>
               {/each}
             </ul>

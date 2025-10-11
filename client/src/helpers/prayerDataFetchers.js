@@ -41,12 +41,17 @@ export const fetchCityMonthCalendar = async (city) => {
 };
 
 const appendPrayerDateToTime = (time) => {
-  // Get tomorrow's date
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
+  // Get current date
+  const date = new Date();
+  
+  // Check if time is exactly "7:23pm" (case-insensitive)
+  if (time.toLowerCase() === currentCityDailyPrayerTime.isha) {
+    // Use tomorrow's date
+    date.setDate(date.getDate() + 1);
+  }
   
   // Format the date
-  const isoString = tomorrow.toISOString();
+  const isoString = date.toISOString();
   const dateOnly = isoString.substring(0, 10);
   const newFormat = dateOnly.replace(/(\d{4})-(\d{2})-(\d{2})/, '$1/$2/$3');
   
