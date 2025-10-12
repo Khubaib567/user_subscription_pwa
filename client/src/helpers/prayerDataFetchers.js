@@ -59,11 +59,15 @@ const appendPrayerDateToTime = (time) => {
   
   // STEP 06.9 : CONVERT THE DATE INTO EPOCHS IN ORDER TO COMPARE THE VALUES BETWEEN THE EPOCHS 
     // ? (CURRENTEPOCH - SPECIFIC TIME EPOCH)
-  const namazSpecificTime = convertTime12to24(get(currentCityDailyPrayerTime).isha)
-  const namazSpecificTimeEpochs = Date.parse(`${dateFormat} ${namazSpecificTime}` )
-  const currentTimeEpochs = Date.parse(`${dateFormat} ${time}`)
-  // console.log("Prayer time: " , namazSpecificTimeEpochs);
-  if (currentTimeEpochs < namazSpecificTimeEpochs) {
+  const ishaPrayerTime = convertTime12to24(get(currentCityDailyPrayerTime).isha)
+  const ishaPrayerTimeEpochs = Date.parse(`${dateFormat} ${ishaPrayerTime}` )
+  const currentTime = new Date().toLocaleTimeString();
+  const currentTimeEpochs = Date.parse(`${dateFormat} ${currentTime}`)
+  // console.log('CurrentTime: ',currentTimeEpochs);
+  // console.log('ishaPrayerTime: ',ishaPrayerTimeEpochs);
+
+  // console.log("Prayer time: " , ishaPrayerTimeEpochs);
+  if (currentTimeEpochs > ishaPrayerTimeEpochs) {
     // Use tomorrow's date
     date.setDate(date.getDate() + 1);
     isoString = date.toISOString();
@@ -73,9 +77,11 @@ const appendPrayerDateToTime = (time) => {
     // * RETURN THE DATE WITH TIME .
     return `${dateFormat} ${time}`
   }
+
+
+  return `${dateFormat} ${time}`
+
   
-  // * RETURN THE DATE WITH TIME .
-  return `${dateFormat} ${time}`;
 };
 
 // SETP 06 : FUNCTION TO GET NEXT SALAH OBJECT.
@@ -130,7 +136,7 @@ export const getNextSalah = (currentDateTime) => {
   let prayerStatusArray = getTimeToNext(currentDateTime, prayerTimeArray);
 
     // STEP 06.6: RETURN THE NEXT PRYAER WHOSE EPOCHS VALUE IS GREATER THEN CURRENT DATE EPOCHS VALUE.
-  // return prayerStatusArray[0]
+  // return prayerStatusArray
   for (let i = 0; i < 5; i++) {
     if (!prayerStatusArray[i].prayerTimeStarted) {
       // console.log("Prayer status : " ,prayerStatusArray[i])
@@ -173,7 +179,7 @@ const getTimeToNext = (currentDateTime, prayerTimeArray) => {
        timeDiff = currentDateEpochs - prayerTimeEpoch;
       prayerTimeDiffArray[i] = {
       prayer: prayerTimeDiffArray[i].prayer.toUpperCase(),
-      prayerTimeStarted: currentDateEpochs >  prayerTimeEpoch,
+      prayerTimeStarted: currentDateEpochs > prayerTimeEpoch,
       timeDiff: timeDiff,
     };
   }

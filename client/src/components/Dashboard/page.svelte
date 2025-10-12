@@ -34,7 +34,7 @@
     currentDateTime = new Date();
     // STEP 05.2 : GET THE NEXT PRAYER OBJECT
     nextPrayer = getNextSalah(currentDateTime);
-    // console.log("Time : " , nextPrayer)
+    console.log("Time : " , nextPrayer)
     // STEP 05.3 : IF THE NEXTPRAYER IS NOT UNDEFINED.
     if (nextPrayer != undefined) {
       // console.log("----------nextPrayer", nextPrayer);
