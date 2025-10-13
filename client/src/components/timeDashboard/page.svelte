@@ -1,4 +1,4 @@
-<script lang="ts">
+<script >
   import { HIJRI_MONTHS_LIST } from "../../assets/data/constants";
   import { currentCityDailyPrayerTime } from "../../stores/prayerTime";
   // import { currentCity } from "../../stores/store";
@@ -9,16 +9,16 @@
   // STEP 02 : INITIALIZE THE REQ. VARIABLES.
   let currentDateTime = new Date();
 
-  let hours: any;
-  let minutes: any;
-  let seconds: any;
+  let hours;
+  let minutes;
+  let seconds;
 
   // STEP 03 : INITIALIZE A PRAYER OBJECT TO AN ARRAY & RENDER IT WHEN SHOWNEXTTIME IS 'TRUE'
-  let nextPrayer: any = {};
-  let showNextTime: any = false;
+  let nextPrayer = {};
+  let showNextTime = false;
 
   // STEP 04 : CREATE A FUNCTION FOR GETTING HOURS & MINUTES FROM SECONDS.
-  function toHoursAndMinutes(totalSeconds: any) {
+  function toHoursAndMinutes(totalSeconds) {
     const totalMinutes = Math.floor(totalSeconds / 60);
 
     const seconds = totalSeconds % 60;
@@ -29,7 +29,7 @@
   }
 
   // STEP 05: EXOPRT THIS FUNCTION WHENEVER WE IMPORTED THIS COMPONENT
-  export const timeTracker = setInterval(() => {
+  const timeTracker = setInterval(() => {
     // STEP 05.1 : GET THE CURRENT DATE.
     currentDateTime = new Date();
     // STEP 05.2 : GET THE NEXT PRAYER OBJECT
