@@ -33,7 +33,7 @@ export const subStatus = writable(subStatusInitialValue);
 toLocalStorage(subStatus, "subStatus");
 
 const currentCityInitialValue = fromLocalStorage("currentCity", CITIES_LIST[2]);
-export const currentCity: any = writable(currentCityInitialValue);
+export const currentCity = writable(currentCityInitialValue);
 toLocalStorage(currentCity, "currentCity");
 
 export const citiesListInitialValue = fromLocalStorage(

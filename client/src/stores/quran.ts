@@ -35,9 +35,9 @@ export const currentJuz = writable(currentJuzInitialValue);
 toLocalStorage(currentJuz, "currentJuz");
 
 export const currentLangsInitialValue = fromLocalStorage("currentLangs", [
-  "ar",
+  // "ar",
   "ur",
-  "en",
+  // "en",
 ]);
 export const currentLangs = writable(currentLangsInitialValue);
 toLocalStorage(currentLangs, "currentLangs");

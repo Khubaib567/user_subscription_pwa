@@ -1,7 +1,7 @@
-<script lang="ts">
-  import type { PageData } from "../../routes/$types";
+<script>
+  // import type { PageData } from "../../routes/$types";
 
-  export let contentProp: PageData;
+  export let contentProp;
 
   let color = "#f1f5cd";
 

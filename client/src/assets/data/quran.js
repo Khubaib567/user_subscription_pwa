@@ -1,17 +1,3 @@
-export type TSurah = {
-  no: number;
-  name: string;
-  ayats?: number;
-  juz: number[];
-};
-
-export type TQuranJuz = {
-  no: number;
-  arabic: string;
-  trans: string;
-  surah: [number, number, number, number];
-};
-
 export const QURAN_SURAH_LIST = [
   { no: 1, name: "Al-Fatiha", ayats: 7, juz: [1] },
   { no: 2, name: "Al-Baqarah", ayats: 286, juz: [1, 2, 3] },
@@ -127,7 +113,7 @@ export const QURAN_SURAH_LIST = [
   { no: 112, name: "Al-Ikhlaas", ayats: 4, juz: [30] },
   { no: 113, name: "Al-Falaq", ayats: 5, juz: [30] },
   { no: 114, name: "An-Naas", ayats: 6, juz: [30] },
-] satisfies TSurah[];
+] ;
 
 export const QURAN_JUZ_LIST = [
   { no: 1, arabic: "آلم", trans: "Alif Laam Meem", surah: [1, 1, 2, 141] },
@@ -245,4 +231,4 @@ export const QURAN_JUZ_LIST = [
     surah: [67, 1, 77, 50],
   },
   { no: 30, arabic: "عمّ", trans: "ʿAmma", surah: [78, 1, 114, 6] },
-] satisfies TQuranJuz[];
+] ;

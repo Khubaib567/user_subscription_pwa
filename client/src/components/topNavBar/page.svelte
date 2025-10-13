@@ -72,7 +72,7 @@
       </button>
       <button
         tabindex="0"
-        class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+        class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-white rounded-box w-52"
       >
         <ul>
           <li class="font-bold">
@@ -113,15 +113,17 @@
             </label>
           </li>
           <li>
-            <span class="label-text">Fiqh Ja'afria</span>
-            <input
-              on:click={toggleCalcMethod}
-              name="toggle_calcmethod"
-              type="checkbox"
-              class="toggle toggle-secondary"
-              bind:checked={$isHanafi}
-            />
-            <span class="label-text">Fiqh Hanafi</span>
+           <label  class="label">
+             <span class="label-text">Fiqh Ja'afria</span>
+              <input
+                on:click={toggleCalcMethod}
+                name="toggle_calcmethod"
+                type="checkbox"
+                class="toggle toggle-secondary bg-white"
+                bind:checked={$isHanafi}
+              />
+             <span class="label-text">Fiqh Hanafi</span>
+           </label>
           </li>
           {#if $subStatus == "true"}
             <li>
@@ -171,8 +173,8 @@
   </div>
 </div>
 
-<div class="modal" class:modal-open={openSubscriptionModal}>
-  <div class="modal-box">
+<div class="modal " class:modal-open={openSubscriptionModal}>
+  <div class="modal-box bg-white">
     <h3 class="font-bold text-lg">
       {#if $isUrdu}
         <span dir="rtl"

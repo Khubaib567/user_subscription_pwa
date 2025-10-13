@@ -10,13 +10,13 @@
 
   let contentDayToGet = new Date().getDate() - 1;
 
-  let ayatProp: any = {
+  let ayatProp = {
     contentType: "Ayat",
     topic: $ayatList[contentDayToGet].topic,
     item: $ayatList[contentDayToGet].ayat,
   };
 
-  let hadithProp: any = {
+  let hadithProp = {
     contentType: "Hadith",
     topic: $hadithList[contentDayToGet].topic,
     item: $hadithList[contentDayToGet].hadith,
@@ -30,16 +30,11 @@
     </div>
     <Dashboard />
     <PrayerWidget />
-    <!-- <br />
+    <br />
     <Slider />
     <br />
     <ContentOfTheDayCard contentProp={ayatProp} />
     <br />
     <ContentOfTheDayCard contentProp={hadithProp} />
-    <br /> -->
-    <!-- <ContentOfTheDayCard
-      contentProp={// contentType: "Dua",
-      $ayatList[contentDayToGet]}
-    /> -->
   </div>
 </div>

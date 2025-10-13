@@ -1,9 +1,11 @@
 <script lang="ts">
   import { isUrdu } from "../../stores/store";
+  import quran from "../../lib/images/quran.png";
+  import tashbeeh from "../../lib/images/tasbeeh.png"
 </script>
 
-<div class="flex justify-start border-t-2 rounded-xl">
-  <h1 class="text-xl pl-5 pt-2 font-bold">
+<div class="flex justify-center border-t-2 rounded-xl">
+  <h1 class="text-xl p-5 font-bold">
     {#if $isUrdu}<span dir="rtl"> آپ کیا کرنا چاہیں گے؟ </span>
     {:else}<span> Which One Will You Choose?</span>
     {/if}
@@ -11,41 +13,41 @@
 </div>
 
 <div
-  class="carousel carousel-center w-full p-4 bg-white rounded-box shadow-lg space-x-4"
+  class="carousel carousel-center w-full max-w-screen-lg p-4 bg-white rounded-box shadow-lg flex flex-row items-center justify-center space-x-6 mx-auto"
 >
-  <div class="grid grid-cols-1 carousel-item content-center">
+  <!-- <div class="carousel-item flex flex-col items-center w-40">
     <a href="/quran">
-      <div>
-        <img
-          alt="/quran"
-          src="img/slider_cards/quran.png"
-          class="rounded-box inline-block align-bottom"
-        />
+      <div class="flex justify-center text-black h-10">
+        {#if $isUrdu}<span dir="rtl"> قرآن </span>
+        {:else}<span> Quran </span>
+        {/if}
       </div>
 
-      <div class="flex justify-center text-black">
-        {#if $isUrdu}<span dir="rtl"> قرآن </span>
-        {:else}
-          <span> Quran </span>
-        {/if}
+      <div>
+        <img
+          alt="Quran"
+          src={quran}
+          class="rounded-box w-full h-auto"
+        />
       </div>
     </a>
-  </div>
+  </div> -->
 
-  <div class="grid grid-cols-1 carousel-item content-center">
+  <div class="carousel-item flex flex-col items-center w-40">
     <a href="/tasbeeh">
-      <div>
+      <div class="flex justify-center text-black h-10">
+        {#if $isUrdu}<span dir="rtl"> تسبیح </span>
+        {:else}<span> Tasbeeh</span>
+        {/if}
+      </div>
+   
+      <div >
         <img
-          alt="/tasbeeh"
-          src="img/slider_cards/tasbeeh.png"
-          class="rounded-box inline-block align-bottom"
+          alt="Tasbeeh"
+          src={tashbeeh}
+          class="rounded-box w-full h-auto"
         />
       </div>
-      <div class="flex justify-center text-black">
-        {#if $isUrdu}<span dir="rtl"> تسبیح </span>{:else}
-          <span> Tasbeeh</span>
-        {/if}
-      </div></a
-    >
+    </a>
   </div>
 </div>

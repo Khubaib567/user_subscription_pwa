@@ -1,11 +1,11 @@
-<script lang="ts">
+<script >
   import AyatCard from "../../components/ayatOfDayCard/page.svelte";
   //   import MenuBar from "./components/MenuBar.svelte";
   // export let data;
   import { fullSurah } from "../../stores/quran";
   import { isUrdu } from "../../stores/store";
 
-  // console.log("---------------------fullSurah", $fullSurah);
+  console.log("---------------------fullSurah", $fullSurah);
   // const { ayats } = data;
 </script>
 

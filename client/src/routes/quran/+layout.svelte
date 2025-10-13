@@ -1,15 +1,15 @@
-<script lang="ts">
+<script>
   import Fa from "svelte-fa";
   import {
     faArrowDown19,
     faArrowDownShortWide,
   } from "@fortawesome/free-solid-svg-icons";
-  import { QURAN_SURAH_LIST, type TSurah } from "../../assets/data/quran";
+  import { QURAN_SURAH_LIST} from "../../assets/data/quran";
   // import type { TQuranStatus } from "../../stores/quran";
   import { currentAyat, currentSurah } from "../../stores/quran";
   import { invalidate, invalidateAll } from "$app/navigation";
 
-  async function handleSurahClick(surah: TSurah) {
+  async function handleSurahClick() {
     // console.log("Surah selected:", surah);
     currentAyat.set({ surah: surah.no, ayat: 1 });
     currentSurah.set(surah);
